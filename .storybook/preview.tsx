@@ -32,6 +32,7 @@ const preview: Preview = {
         style={{
           display: "flex",
           justifyContent: "center",
+          marginTop: "1rem",
         }}
       >
         <Story />

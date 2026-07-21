@@ -1,9 +1,7 @@
-import Button from "./Button/Button";
-import Input from "./Input/Input";
+import FormInput from "./FormInput/FormInput";
 
 const Form = {
-  Button,
-  Input,
+  FormInput,
 };
 
 export default Form;
