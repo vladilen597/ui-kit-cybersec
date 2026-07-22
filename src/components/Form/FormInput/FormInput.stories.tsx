@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import FormInput from "./FormInput";
-import { FormProvider, useForm } from "react-hook-form";
 
 const meta: Meta<typeof FormInput> = {
   component: FormInput,
@@ -8,15 +7,16 @@ const meta: Meta<typeof FormInput> = {
   tags: ["autodocs"],
   args: {
     disabled: false,
-    placeholder: "Enter your text",
+    className: "",
   },
 };
 
 export default meta;
 type Story = StoryObj<typeof FormInput>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
     name: "firstName",
+    placeholder: "John Johns",
   },
 };

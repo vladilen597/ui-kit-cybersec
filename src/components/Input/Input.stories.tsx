@@ -6,6 +6,7 @@ const meta: Meta<typeof Input> = {
   title: "Shared/Input",
   tags: ["autodocs"],
   args: {
+    disabled: false,
     placeholder: "Write something",
   },
 };
@@ -13,6 +14,6 @@ const meta: Meta<typeof Input> = {
 export default meta;
 type Story = StoryObj<typeof Input>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {},
 };

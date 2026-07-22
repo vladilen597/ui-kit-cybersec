@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react-vite";
 import { withThemeByClassName } from "@storybook/addon-themes";
+import { FormProvider, useForm } from "react-hook-form";
 
 import "../src/styles/globals.css";
 
@@ -27,17 +28,22 @@ const preview: Preview = {
       },
       defaultTheme: "light",
     }),
-    (Story) => (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "1rem",
-        }}
-      >
-        <Story />
-      </div>
-    ),
+    (Story) => {
+      const methods = useForm();
+      return (
+        <FormProvider {...methods}>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              marginTop: "1rem",
+            }}
+          >
+            <Story />
+          </div>
+        </FormProvider>
+      );
+    },
   ],
 };
 
