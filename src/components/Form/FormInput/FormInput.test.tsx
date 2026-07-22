@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import { page } from "@vitest/browser/context";
+import { describe, it, expect } from "vitest";
 import FormInput from "./FormInput";
-import userEvent from "@testing-library/user-event";
 import { FormProvider, useForm } from "react-hook-form";
 
 const FormContainer = ({
@@ -15,24 +16,27 @@ const FormContainer = ({
 };
 
 describe("FormInput component", () => {
-  it("renders with correct form name", () => {
+  it("renders with correct form name", async () => {
     render(
       <FormContainer>
         <FormInput name="firstName" />
       </FormContainer>,
     );
+
+    const input = page.getByRole("textbox");
+    await expect.element(input).toBeVisible();
+    await expect.element(input).toHaveAttribute("name", "firstName");
   });
 
-  it("renders with correct placeholder", () => {
+  it("renders with correct placeholder", async () => {
     render(
       <FormContainer>
         <FormInput name="firstName" placeholder="John Doe" />
       </FormContainer>,
     );
-    expect(screen.getByRole("textbox")).toHaveAttribute(
-      "placeholder",
-      "John Doe",
-    );
+
+    const input = page.getByRole("textbox");
+    await expect.element(input).toHaveAttribute("placeholder", "John Doe");
   });
 
   it("lets user type text", async () => {
@@ -41,9 +45,14 @@ describe("FormInput component", () => {
         <FormInput name="firstName" />
       </FormContainer>,
     );
-    const input = screen.getByRole("textbox");
-    await userEvent.type(input, "James");
-    expect(input).toHaveValue("James");
+
+    const input = page.getByRole("textbox");
+
+    try {
+      await input.fill("James");
+    } catch {}
+
+    await expect.element(input).toHaveValue("James");
   });
 
   it("to be disabled and doesn't let user type", async () => {
@@ -52,10 +61,15 @@ describe("FormInput component", () => {
         <FormInput name="firstName" disabled />
       </FormContainer>,
     );
-    const input = screen.getByRole("textbox");
-    await userEvent.type(input, "James");
-    expect(input).toBeDisabled();
-    expect(input).toHaveValue("");
+
+    const input = page.getByRole("textbox");
+
+    await expect.element(input).toBeDisabled();
+
+    try {
+      await input.fill("James");
+    } catch {}
+    await expect.element(input).toHaveValue("");
   });
 
   it("renders with default value", async () => {
@@ -64,6 +78,8 @@ describe("FormInput component", () => {
         <FormInput name="firstName" />
       </FormContainer>,
     );
-    expect(screen.getByRole("textbox")).toHaveValue("John Jones");
+
+    const input = page.getByRole("textbox");
+    await expect.element(input).toHaveValue("John Jones");
   });
 });
