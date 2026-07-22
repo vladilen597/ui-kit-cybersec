@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import Button from "./Button";
+import { fn, within } from "storybook/test";
 
-const meta = {
+const meta: Meta<typeof Button> = {
   component: Button,
   title: "Shared/Button",
   tags: ["autodocs"],
@@ -36,15 +37,25 @@ const meta = {
   args: {
     variant: "default",
     children: "Hello World!",
-    disabled: false,
+    onClick: fn(),
   },
-} satisfies Meta<typeof Button>;
+  play: async ({ canvasElement, userEvent }) => {
+    const canvas = within(canvasElement);
+    const button = canvas.getByRole("button");
+
+    await userEvent.click(button);
+  },
+};
 
 export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Default: Story = {
-  args: { children: "Default" },
+  args: {},
+};
+
+export const Disabled: Story = {
+  args: { disabled: true },
 };
 
 export const AllVariants: Story = {

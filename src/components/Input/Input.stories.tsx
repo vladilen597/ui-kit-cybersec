@@ -17,3 +17,15 @@ type Story = StoryObj<typeof Input>;
 export const Default: Story = {
   args: {},
 };
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+};
+
+export const Invalid: Story = {
+  args: {
+    "aria-invalid": true,
+  },
+};
