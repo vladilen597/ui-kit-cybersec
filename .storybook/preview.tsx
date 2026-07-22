@@ -28,22 +28,17 @@ const preview: Preview = {
       },
       defaultTheme: "light",
     }),
-    (Story) => {
-      const methods = useForm();
-      return (
-        <FormProvider {...methods}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              marginTop: "1rem",
-            }}
-          >
-            <Story />
-          </div>
-        </FormProvider>
-      );
-    },
+    (Story) => (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          marginTop: "1rem",
+        }}
+      >
+        <Story />
+      </div>
+    ),
   ],
 };
 

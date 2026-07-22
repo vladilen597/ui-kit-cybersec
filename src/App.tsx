@@ -19,7 +19,7 @@ const App = () => {
   return (
     <FormProvider {...methods}>
       <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <FormInput className="" name="firstName" />
+        <FormInput name="firstName" />
       </form>
     </FormProvider>
   );

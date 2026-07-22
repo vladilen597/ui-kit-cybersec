@@ -1,4 +1,3 @@
-import { Controller, useFormContext } from "react-hook-form";
 import Input, { type IInputProps } from "@/components/Input/Input";
 import { createFormElement } from "@/utils/createFormElement";
 
@@ -6,7 +5,7 @@ interface IFormInputProps extends IInputProps {
   name: string;
 }
 
-const FormInput = createFormElement<IFormInputProps>("firstName", Input);
+const FormInput = createFormElement<IFormInputProps>(Input);
 
 // const FormInput = (props: IFormInputProps) => {
 //   const { name, ...otherProps } = props;
