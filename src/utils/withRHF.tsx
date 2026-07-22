@@ -16,7 +16,10 @@ export const withRHF = (
 
   return (
     <FormProvider {...methods}>
-      <form className="flex gap-1" onSubmit={methods.handleSubmit(onSubmit)}>
+      <form
+        className="flex gap-1 w-full"
+        onSubmit={methods.handleSubmit(onSubmit)}
+      >
         <Story />
         {showSubmitButton && <Button type="submit">Submit</Button>}
       </form>
