@@ -1,6 +1,7 @@
 import { cn } from "@/shared/ui/shadcn/lib/utils";
 import { Button as ShadcnButton } from "@/shared/ui/shadcn/button";
-import { forwardRef, type ForwardedRef } from "react";
+import { forwardRef } from "react";
+import Spinner from "../Spinner/Spinner";
 
 export type ButtonVariant =
   | "default"
@@ -26,21 +27,32 @@ export interface IButtonProps
   variant?: ButtonVariant;
   size?: ButtonSize;
   children?: React.ReactNode;
+  isLoading?: boolean;
 }
 
 const Button = forwardRef(
-  (props: IButtonProps, ref: ForwardedRef<HTMLButtonElement>) => {
-    const { className, variant, size, children, ...otherProps } = props;
+  (props: IButtonProps, ref: React.ForwardedRef<HTMLButtonElement>) => {
+    const {
+      className,
+      variant,
+      disabled,
+      size,
+      children,
+      isLoading,
+      ...otherProps
+    } = props;
 
     return (
       <ShadcnButton
         ref={ref}
         variant={variant}
         size={size}
+        disabled={isLoading || disabled}
         className={cn(className)}
         {...otherProps}
       >
         {children}
+        {isLoading && <Spinner size="sm" />}
       </ShadcnButton>
     );
   },

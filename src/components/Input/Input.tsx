@@ -1,4 +1,5 @@
 import { Input as ShadcnInput } from "@/shared/ui/shadcn/input";
+import { forwardRef } from "react";
 
 export interface IInputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -8,10 +9,19 @@ export interface IInputProps
   className?: string;
 }
 
-const Input = (props: IInputProps) => {
-  const { label, value, onChange, className, ...otherProps } = props;
+const Input = forwardRef(
+  (props: IInputProps, ref: React.ForwardedRef<HTMLInputElement>) => {
+    const { label, value, onChange, className, ...otherProps } = props;
 
-  return <ShadcnInput value={value} onChange={onChange} {...otherProps} />;
-};
+    return (
+      <ShadcnInput
+        ref={ref}
+        value={value}
+        onChange={onChange}
+        {...otherProps}
+      />
+    );
+  },
+);
 
 export default Input;

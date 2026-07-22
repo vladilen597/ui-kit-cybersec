@@ -1,5 +1,6 @@
 import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import FormInput from "./components/Form/FormInput/FormInput";
+import Button from "./components/Button/Button";
 
 export interface IFormFields {
   firstName: string;
@@ -17,11 +18,16 @@ const App = () => {
   };
 
   return (
-    <FormProvider {...methods}>
-      <form onSubmit={methods.handleSubmit(onSubmit)}>
-        <FormInput name="firstName" />
-      </form>
-    </FormProvider>
+    <>
+      <FormProvider {...methods}>
+        <form onSubmit={methods.handleSubmit(onSubmit)}>
+          <FormInput name="firstName" />
+          <Button className="" isLoading>
+            Hello!
+          </Button>
+        </form>
+      </FormProvider>
+    </>
   );
 };
 

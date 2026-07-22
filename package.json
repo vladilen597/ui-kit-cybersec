@@ -5,13 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vitest tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "changeset": "changeset",
-    "version-packages": "changeset version",
+    "changeset-update": "changeset version",
     "test": "vitest"
   },
   "dependencies": {
@@ -41,6 +41,10 @@
     "@storybook/addon-vitest": "^10.5.3",
     "@storybook/builder-vite": "^10.5.3",
     "@storybook/react-vite": "^10.5.3",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
     "@types/node": "^24.13.2",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
