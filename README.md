@@ -24,6 +24,12 @@ npm run dev
 npm run test
 ```
 
+Если playwright не запускается:
+
+```bash
+npx playwright install chromium
+```
+
 Обновление версии:
 
 ```bash
