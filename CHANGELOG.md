@@ -1,5 +1,12 @@
 # ui-kit-cybersec
 
+## 0.1.3
+
+### Patch Changes
+
+- be6b9be: change tests to playwright
+- 1e002c3: fix building issue
+
 ## 0.1.2
 
 ### Patch Changes
