@@ -5,6 +5,12 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "src/*": ["./src/*"]
+    },
+    "ignoreDeprecations": "6.0",
+    "jsx": "react-jsx"
   }
 }

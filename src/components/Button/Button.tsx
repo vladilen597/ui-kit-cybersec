@@ -21,8 +21,7 @@ export type ButtonSize =
   | "icon-lg"
   | "default";
 
-export interface IButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   className?: string;
   variant?: ButtonVariant;
   size?: ButtonSize;

@@ -2,7 +2,7 @@ import { FormProvider, useForm, type SubmitHandler } from "react-hook-form";
 import FormInput from "./components/Form/FormInput/FormInput";
 import Button from "./components/Button/Button";
 
-export interface IFormFields {
+interface IFormFields {
   firstName: string;
 }
 
